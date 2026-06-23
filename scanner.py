@@ -20,7 +20,7 @@ else:
 for ip in host_list:
     for port in ports_to_scan:  
         s = socket.socket()
-        s.settimeout(1.0)
+        s.settimeout(0.1)
         print(f"Scanning {ip} on port {port}")
         result = s.connect_ex((str(ip), port))
         if result == 0:
