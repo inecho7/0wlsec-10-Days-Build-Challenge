@@ -1,5 +1,6 @@
 import ipaddress
 import socket
+import time
 from concurrent.futures import ThreadPoolExecutor
 timeout = 0.1
 
@@ -30,8 +31,17 @@ else:
     print("Error: Please enter a valid choice")
     ports_to_scan = []
 
+start_time = time.time()
+
 for ip in host_list:
     print(f"\n Scanning host: {ip}...")
     with ThreadPoolExecutor(max_workers=100) as executor:
         for port in ports_to_scan:
             executor.submit(scan_port, ip, port, timeout)
+
+end_time = time.time()
+total_time = end_time - start_time
+print("\n" + "="*40)
+print("Scan Complete")
+print(f"Total Time Elapsed: {total_time:.2f} seconds")
+print("="*40)
