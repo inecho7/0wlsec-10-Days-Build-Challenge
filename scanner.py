@@ -6,14 +6,14 @@ from concurrent.futures import ThreadPoolExecutor
 timeout = 0.1
 
 THREAT_PROFILES = {
-    21 = "FTP (Plaintext credentials transfer risk)",
-    22 = "SSH (Remote Access Management - Verify authentication strength)",
-    23 = "Telnet (Unencryoted remote administration hazard)",
-    25 = "SMTP (Mail relay tracking required)",
-    53 = "DNS (Potential zone transfer or amplification vector)",
-    80 = "HTTP (Cleartext web traffic)",
-    443 = "HTTPS (Encrypted web traffic - Check certificate validity)",
-    445 = "SMB (File sharing - High Priority inspection for legacy exploits)"
+    21: "FTP (Plaintext credentials transfer risk)",
+    22: "SSH (Remote Access Management - Verify authentication strength)",
+    23: "Telnet (Unencryoted remote administration hazard)",
+    25: "SMTP (Mail relay tracking required)",
+    53: "DNS (Potential zone transfer or amplification vector)",
+    80: "HTTP (Cleartext web traffic)",
+    443: "HTTPS (Encrypted web traffic - Check certificate validity)",
+    445: "SMB (File sharing - High Priority inspection for legacy exploits)"
 }
 
 target_input = input("Enter the target Network (e.g. 192.168.1.0/24)")
