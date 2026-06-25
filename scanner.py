@@ -16,6 +16,9 @@ THREAT_PROFILES = {
     445: "SMB (File sharing - High Priority inspection for legacy exploits)"
 }
 
+threads_input = input("Enter number of concurrent threads: ")
+max_threads = int(threads_input) if threads_input.isdigit() else 100
+
 target_input = input("Enter the target Network (e.g. 192.168.1.0/24)")
 network = ipaddress.ip_network(target_input, strict=False)
 host_list = network.hosts()
@@ -49,7 +52,7 @@ detected_services = []
 
 for ip in host_list:
     print(f"\n Scanning host: {ip}...")
-    with ThreadPoolExecutor(max_workers=100) as executor:
+    with ThreadPoolExecutor(max_workers=max_threads) as executor:
         for port in ports_to_scan:
             executor.submit(scan_port, ip, port, timeout)
 
